@@ -73,14 +73,13 @@ function TemplateFour({ color, topic, grid }) {
                 {userDB && dataForDate.length > 0 && dataForDate.map((i, index) =>
                     <>
                         {userDB[topic]["Posts"] && userDB[topic]["Posts"][`PostImage_${i}`] && router.pathname !== "/Admin" &&
-                            <div key={index} >
-                                {userDB[topic]["Posts"][`PostImage_${i}`]['content'] ? '' : <span className={styles.inDevelop}>{router.pathname !== "/Admin" && ''}</span>}
+                            <div className='relative shadow-[#0000006e] shadow-xl  rounded-[5px] m-5 md:m-0  md:mb-5' key={index} >
                                 {router.pathname == "/Admin" && <span className={styles.datePost} onClick={() => router.pathname == "/Admin" && handlerClickEnlace({ i, carpeta: 'Post' })}>{`${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getDate()}-${months[new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getMonth()]} ${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getHours()}:${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getMinutes()}`}</span>}
 
                                 <Link href={userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] ? userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] : ''} legacyBehavior>
                                     <a target={userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] && userDB[topic]["Posts"][`PostImage_${i}`]['enlace'].includes('http') ? '_blanck' : ''}>
 
-                                        {userDB[topic].Posts[`PostImage_${i}`].images !== undefined && <Slide transitionDuration={8000} duration={10} scale={1}{...properties} indicators={true} easing='cubic' autoplay={false}>
+                                        {userDB[topic].Posts[`PostImage_${i}`].images !== undefined && <Slide transitionDuration={8000} duration={10} scale={1}{...properties} indicators={false} easing='cubic' autoplay={false}>
                                             {
                                                 userDB[topic].Posts[`PostImage_${i}`].images.map((i, index) =>
                                                     <div className="each-slide" key={index} >
@@ -89,11 +88,6 @@ function TemplateFour({ color, topic, grid }) {
                                                                 ? <img className='object-cover h-full' src={i.url} />
                                                                 : <img className='object-cover h-full' src={i.url} />
                                                         }
-                                                        {/* {
-                                                            userDB[`${routeDB}`][`BannerNotas${item}`][i].whatsapp !== '' && <Link href={`https://api.whatsapp.com/send?phone=${userDB[`${routeDB}`][`BannerNotas${item}`][i].whatsapp}&text=Hola%20vi%20su%20anuncion%20en%20el%20PERIODICO%20HOY%20`} legacyBehavior>
-                                                                <a target="_blank"><img className={styles.sliderWhatsapp} src={`/SocialMedia/whatsapp.svg`} /></a>
-                                                            </Link>
-                                                        } */}
                                                     </div>
                                                 )}
                                         </Slide>}
@@ -105,7 +99,7 @@ function TemplateFour({ color, topic, grid }) {
                         }
                         {
                             userDB[topic]["Posts"] && userDB[topic]["Posts"][`PostImage_${i}`] && router.pathname == "/Admin" &&
-                            <div className='relative shadow-[#0000006e] shadow-xl  rounded-[5px] m-5 md:m-0  md:my-5' key={index}>
+                            <div className='relative shadow-[#0000006e] shadow-xl  rounded-[5px] m-5 md:m-0  md:mb-5' key={index}>
                                 {<span className={styles.datePost} onClick={() => router.pathname == "/Admin" && handlerClickEnlace({ i, carpeta: 'Post' })}>{`${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getDate()}-${months[new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getMonth()]} ${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getHours()}:${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getMinutes()}`}</span>}
                                 <Link  href={userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] ? userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] : ''} legacyBehavior>
                                     <a  target={userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] && userDB[topic]["Posts"][`PostImage_${i}`]['enlace'].includes('http') ? '_blanck' : ''}>
