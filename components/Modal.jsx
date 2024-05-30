@@ -81,18 +81,18 @@ export default function Error({ key, rute, carpeta, item, i, post, topic, close 
 
                 {carpeta == 'Post' &&
                     <form className={style.formSelectPost}>
-                        <label htmlFor={`${topic}-PostConfig`} className={style.label} >Seleccionar Post </label>
+                        <label  className='bg-[brown] text-white w-full rounded-full p-1 text-[12px] mb-5' >Editar</label>
+                    
+                        {/* <label htmlFor={`${topic}-PostConfig`} className={style.label} >Seleccionar Post </label>
                         <img className={style.previewIMG} style={{ objectPosition: `${data.objectPositionPost ? data.objectPositionPost : userDB[topic]["Posts"][`PostImage_${i}`].objectFit} ` }} src={urlPostImage == null ? userDB[topic].Posts[`PostImage_${i}`].url : urlPostImage} alt="" />
                         <input type="file" id={`${topic}-PostConfig`} className={style.inputFile} name={`PostImage`} onChange={manageInputIMGSetting} accept=".jpg, .jpeg, .png, .mp4, webm" />
+                         */}
+                        
                         <input type="text" placeholder='Descripción' name="descriptionPost" defaultValue={userDB[topic]["Posts"][`PostImage_${i}`].description}  onChange={handlerEventChange} maxLength={isCheckedLength ? 65 : ''}/>
                         <input type="text" placeholder='Enlace' name="enlacePost" defaultValue={userDB[topic]["Posts"][`PostImage_${i}`].enlace} onChange={handlerEventChange} />
-                        <div className={style.radioInputs}>
+                        <div className={`${style.radioInputs} max-w-[200px]`}>
                             <input type="checkbox" onClick={handlerCheckedLength} checked={isCheckedLength} /> Max65
-                            <input type="radio" value="left" name="objectPositionPost" onChange={handlerEventChange} /> ⇦
-                            <input type="radio" value="top" name="objectPositionPost" onChange={handlerEventChange} /> ⇧
-                            <input type="radio" value="center" name="objectPositionPost" onChange={handlerEventChange} /> c
-                            <input type="radio" value="bottom" name="objectPositionPost" onChange={handlerEventChange} /> ⇩
-                            <input type="radio" value="right" name="objectPositionPost" onChange={handlerEventChange} /> ⇨
+                        
                             <input type="checkbox" onClick={handlerCheckedComp} checked={isCheckedComp} /> Comp
                         </div>
                         <Button style="buttonMiniSecondary" click={(e) => saveConfig(e, "SavePost")}>Guardar</Button>

@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { getDate, getDayMonthYear, getMonthAndYear } from '../utils/Utils'
 import FormAddsC from './FormAddsC'
 import Tag from '../components/Tag'
-import {sectionsDB} from '../utils/SectionsDB'
+import { sectionsDB } from '../utils/SectionsDB'
 export default function Form({ topic, value, color }) {
   const { user, userDB, setUserData, setUserSuccess, success, postsIMG, setUserPostsIMG, monthAndYear, dayMonthYear, viewPeriodista } = useUser()
 
@@ -124,7 +124,7 @@ export default function Form({ topic, value, color }) {
       const fileName = `PostImage_${newDate.getTime()}` // PostImage_Tue Nov 15 2022 
       const object = {
         [fileName]: typeof fileList[0] === 'string'
-          ? { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', images: fileList.map(i=>{return {url: i}})}
+          ? { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', images: fileList.map(i => { return { url: i } }) }
           : { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center' }
       }
 
@@ -235,7 +235,7 @@ export default function Form({ topic, value, color }) {
           <div className={`min-h-[450px]  relative flex flex-col justify-center items-center bg-[#00404a] p-5 lg:p-10`}>
             <h3 className='text-white pb-[20px]'>Subir clasificados</h3>
             <form className='relative  w-full flex mb-2 ' onSubmit={handlerEventChange2}>
-              <input type="text" className='w-full border-b-[1px] border-gray-500 rounded-[5px] mr-2 text-[12px]' placeholder='Urls' name="images" />
+              <input type="text" className='w-full border-b-[1px] border-gray-500 rounded-[5px] mr-2 text-[12px] px-5' placeholder='Urls' name="images" />
               <button className='block w-[50px] relative cursor-pointer  rounded-bl-[5px] rounded-tr-[5px] transition-all p-[2px] text-[white] text-[12px] bg-[brown] border-[2px] border-[brown]'>add</button>
             </form>
             <form className={`w-full bg-white rounded-[20px] p-5 space-y-5 ${style.formSelectPost}`} onSubmit={formSubmit}>
@@ -251,6 +251,22 @@ export default function Form({ topic, value, color }) {
               <input type="text" className='w-full border-b-[1px] border-gray-500' placeholder='Titular' name="descriptionPost" onChange={handlerEventChange} maxLength={isCheckedLength ? 65 : ''} />
               {/* <input type="text" className='w-full border-b-[1px] border-gray-500' placeholder='Enlace' name="enlacePost" onChange={handlerEventChange} /> */}
               <input type="text" className='w-full border-b-[1px] border-gray-500' placeholder='WhatsApp' name="whatsapp" onChange={handlerEventChange} />
+
+
+
+
+
+
+
+
+              <input  className='w-full border-b-[1px] border-gray-500' type="date" id="start" name={`dateInit`} onChange={handlerEventChange} />
+              <p className={`text-[12px] ${data[`dateInit`] ? style.green : 'text-[brown]'}`}>{data[`dateInit`] ? 'Correcto' : '*Requerido'}</p>
+
+              <input  className='w-full border-b-[1px] border-gray-500'type="date" id="start" name={`dateFinish`} onChange={handlerEventChange} />
+              <p className={`text-[12px] ${data[`dateFinish`] ? style.green : 'text-[brown]'}`}>{data[`dateFinish`] ? 'Correcto' : '*Requerido'}</p>
+
+
+
 
 
               <div className='w-full flex justify-between text-[12px]'>
