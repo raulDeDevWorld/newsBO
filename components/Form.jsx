@@ -168,14 +168,14 @@ export default function Form({ topic, value, color }) {
       {/* <select className={style.select}  name={`${topic}-Template-${dayMonthYear}`} onChange={manageTemplate} style={{ backgroundColor: color, fontWeight: 'bold', border: '2px solid brown' }}> */}
       <select className={`${style.select} text-white`} name={`${topic}-Template-${dayMonthYear}`} onChange={manageTemplate} style={{ fontWeight: 'bold', }}>
         <option value="#" selected={value == "TemplateOne" ? true : false}>Ninguno-{topic}</option>
-        <option value="TemplateOne" selected={value == "TemplateOne" ? true : false}>Plantilla 1-{topic}</option>
+        {/* <option value="TemplateOne" selected={value == "TemplateOne" ? true : false}>Plantilla 1-{topic}</option>
         <option value="TemplateThreeA" selected={value == "TemplateThreeA" ? true : false}>Plantilla 2-{topic}</option>
         <option value="TemplateThreeB" selected={value == "TemplateThreeB" ? true : false}>Plantilla 3-{topic}</option>
         <option value="TemplateFour" selected={value == "TemplateFour" ? true : false}>Plantilla 4-{topic}</option>
         <option value="TemplateFive" selected={value == "TemplateFive" ? true : false}>Plantilla 5-{topic}</option>
         <option value="TemplateSix" selected={value == "TemplateSix" ? true : false}>Plantilla 6-{topic}</option>
         <option value="TemplateSeven" selected={value == "TemplateSeven" ? true : false}>Plantilla 7-{topic}</option>
-        <option value="TemplateEight" selected={value == "TemplateEight" ? true : false}>Plantilla 8-{topic}</option>
+        <option value="TemplateEight" selected={value == "TemplateEight" ? true : false}>Plantilla 8-{topic}</option> */}
       </select>
 
       {userDB && userDB.users && userDB.users[user.uid] && userDB.users[user.uid].rol === 'periodista' || viewPeriodista == true ?
