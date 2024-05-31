@@ -47,7 +47,7 @@ function TemplateFour({ color, topic, grid }) {
     }, [userDB]);
     return (
 
-        <section className={`${styles.section} `} id={topic} style={{ backgroundColor: 'white' }}>
+        <section className={`${styles.section}  `} id={topic} style={{ backgroundColor: 'white',  }}>
             {topic != "Inicio" && <div className={styles.containerSubtitle}><h4 className={styles.subtitle}>{topic == 'Invitaciones' ? 'Invitaciones' : topic.toUpperCase()}</h4></div>}
 
             {userDB[topic]["BannerTop"] && <Banner ruta={topic} carpeta="BannerTop" click={handlerClickEnlace}></Banner>}
@@ -56,7 +56,7 @@ function TemplateFour({ color, topic, grid }) {
 
 
             <div
-            className={`w-full md:p-5 columns-1 sm:columns-3 ${styles.cssStyle}` }
+            className={` w-full  md:p-5 columns-2 sm:columns-3 p-2 ${styles.cssStyle}` }
             //  className={`
             //     ${grid === 'TemplateOne' && styles.gridOne}
             //     ${grid === 'TemplateThreeA' && styles.gridThreeA}
@@ -73,7 +73,7 @@ function TemplateFour({ color, topic, grid }) {
                 {userDB && dataForDate.length > 0 && dataForDate.map((i, index) =>
                     <>
                         {userDB[topic]["Posts"] && userDB[topic]["Posts"][`PostImage_${i}`] && router.pathname !== "/Admin" &&
-                            <div className='relative shadow-[#0000006e] shadow-xl  rounded-[5px] m-5 md:m-0  md:mb-5' key={index} >
+                            <div className='relative shadow-[#0000006e] shadow-xl  rounded-[5px] mb-3  md:mb-5' key={index} >
                                 {router.pathname == "/Admin" && <span className={styles.datePost} onClick={() => router.pathname == "/Admin" && handlerClickEnlace({ i, carpeta: 'Post' })}>{`${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getDate()}-${months[new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getMonth()]} ${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getHours()}:${new Date(userDB[topic].Posts[`PostImage_${i}`].fecha).getMinutes()}`}</span>}
 
                                 <Link href={userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] ? userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] : ''} legacyBehavior>

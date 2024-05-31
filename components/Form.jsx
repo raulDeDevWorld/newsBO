@@ -65,6 +65,18 @@ export default function Form({ topic, value, color }) {
     const object = { [new Date().getTime()]: value }
     setFileList([...fileList.filter(i => typeof i === 'string'), value])
   }
+  
+  function handlerEventChange3(e) {
+    let year = e.target.value.split('-')[0]
+    let month = e.target.value.split('-')[1]
+    let day = e.target.value.split('-')[2]
+
+    const name = e.target.name
+    const value = e.target.value
+    const object = { [name]:  new Date(parseInt(year), parseInt(month - 1), day, 0, 0, 0).getTime() }
+
+    setData({ ...data, ...object })
+}
   function handlerChecked() {
     setIsChecked(!isChecked)
   }
@@ -124,8 +136,8 @@ export default function Form({ topic, value, color }) {
       const fileName = `PostImage_${newDate.getTime()}` // PostImage_Tue Nov 15 2022 
       const object = {
         [fileName]: typeof fileList[0] === 'string'
-          ? { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', images: fileList.map(i => { return { url: i } }) }
-          : { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center' }
+          ? {...data, fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', images: fileList.map(i => { return { url: i } }) }
+          : {...data, fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center' }
       }
 
       setUserSuccess('Cargando')
@@ -148,8 +160,9 @@ export default function Form({ topic, value, color }) {
   }
   function formSubmit(e) {
     e.preventDefault()
-    console.log(e.target)
   }
+  console.log(data)
+
   return (
     <div className={style.form}>
       {/* <select className={style.select}  name={`${topic}-Template-${dayMonthYear}`} onChange={manageTemplate} style={{ backgroundColor: color, fontWeight: 'bold', border: '2px solid brown' }}> */}
@@ -259,10 +272,10 @@ export default function Form({ topic, value, color }) {
 
 
 
-              <input  className='w-full border-b-[1px] border-gray-500' type="date" id="start" name={`dateInit`} onChange={handlerEventChange} />
+              <input  className='w-full border-b-[1px] border-gray-500' type="date" id="start" name={`dateInit`} onChange={handlerEventChange3} />
               <p className={`text-[12px] ${data[`dateInit`] ? style.green : 'text-[brown]'}`}>{data[`dateInit`] ? 'Correcto' : '*Requerido'}</p>
 
-              <input  className='w-full border-b-[1px] border-gray-500'type="date" id="start" name={`dateFinish`} onChange={handlerEventChange} />
+              <input  className='w-full border-b-[1px] border-gray-500'type="date" id="start" name={`dateFinish`} onChange={handlerEventChange3} />
               <p className={`text-[12px] ${data[`dateFinish`] ? style.green : 'text-[brown]'}`}>{data[`dateFinish`] ? 'Correcto' : '*Requerido'}</p>
 
 
