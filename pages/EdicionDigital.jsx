@@ -90,7 +90,7 @@ function Form({ topic, value, color }) {
         // }
     }
 
-    console.log(user)
+    console.log(userDB)
     return (
         <Layout>
 
